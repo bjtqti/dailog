@@ -8,7 +8,18 @@
 
 <script type="text/javascript" src="../src/js/busy.js"></script>
 <script type="text/javascript">
-	var b = new Busy('busy...');
+	var b = new Busy();
+	b.show();
+
+	//自动调整大小
+	setTimeout(function(){
+		b.autofixed().show();
+	},3000)
+
+	//关闭
+	setTimeout(function(){
+		b.hide();
+	},5000)
 </script>
 </body>
 </html>
