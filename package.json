@@ -1,28 +1,19 @@
 {
-  "name": "dailog",
-  "version": "0.1.0",
-  "description": "dailog",
-  "main": "dailog.js",
-  "dependencies": {
-    "gulp": "^3.9.0"
-  },
-  "devDependencies": {
-    "gulp-autoprefixer": "^2.3.1",
-    "gulp-concat": "^2.6.0",
-    "gulp-jshint": "^1.11.2",
-    "gulp-uglify": "^1.2.0",
-    "gulp-watch": "^4.3.4"
-  },
+  "name": "dialog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build":"gulp"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/bjtqti/dailog.git"
-  },
-  "keywords": [
-    "dailog"
-  ],
-  "author": "ouyangli",
-  "license": "MIT"
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "browser-sync": "^2.13.0",
+    "cssnext": "^1.8.4",
+    "gulp-postcss": "^6.1.1",
+    "precss": "^1.4.0"
+  }
 }

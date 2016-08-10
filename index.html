@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>dailog</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="format-detection" content="telephone=no, address=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/dialog.css">
+    <script type="text/javascript" src="js/flexible.js"></script>
+    <script type="text/javascript" src="js/dialog.js"></script>
+    <title>dailog</title>
 </head>
 <body>
-	
+<h3><button>删除</button></h3>
+<!-- <div class="dialog-container">
+	<div class="dialog">
+		<div class="dialog-title">
+			提示
+		</div>
+		<div class="dialog-content">
+			确定删除该宝贝吗？
+		</div>
+		<div class="dialog-btns">
+			<button>取消</button>
+			<button>确定</button>
+		</div>
+	</div>
+</div> -->
+<script type="text/javascript">
+ 	document.getElementsByTagName('button')[0].onclick=function(){
+ 		d.show();
+ 	}
+	var d = new Dialog('确定删除该宝贝吗？',{
+		onCancel:function(){
+			d.hide();
+		},
+		onConfrim:function(){
+			d.hide();
+		},
+		title:'确认信息',
+		onlyConfirm:false,
+		confirmText:'是',
+		cancelText:'否'
+	});
+</script>
 </body>
 </html>

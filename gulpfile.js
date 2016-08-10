@@ -1,30 +1,47 @@
-var gulp   = require('gulp');
-var jshint = require('gulp-jshint');
-var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
-var watch  = require('gulp-watch');
-var autoprefixer = require('gulp-autoprefixer');
+var gulp = require('gulp');
+var postcss = require('gulp-postcss');
+//var watch = require('gulp-watch');
+var autoprefixer = require('autoprefixer');
+var browserSync = require('browser-sync');
+var cssnext = require('cssnext');
+var precss = require('precss');
+var reload = browserSync.reload;
 
+// var info = autoprefixer({ browsers: ['last 3 version'] }).info();
+// console.log(info);
 
-gulp.task('lint', function() {
-	gulp.src('src/*.js')
-		.pipe(jshint())
-    	.pipe(jshint.reporter('default'));
+var config = {
+	style : ['./css/*.css']
+}
+
+gulp.task('css',function(){
+	var processors = [
+		precss,
+		cssnext,
+		autoprefixer({browsers:['last 3 versions']})
+	];
+	return gulp.src(config.style)
+		//.pipe(watch(config.style))
+		.pipe(postcss(processors))
+		.pipe(gulp.dest('./dest'))
+		.pipe(reload({stream:true}))
 });
 
-gulp.task('mini-js',function(){
-	gulp.src('src/*.js')
-		.pipe(concat('app.js'))
-		.pipe(uglify())
-		.pipe(gulp.dest('build'))
-});
+gulp.task('server',['css'],function(){
+	browserSync({
+		server:{
+			baseDir:'./'
+		}
+	});
 
-gulp.task('mini-css',function(){
-	gulp.src('src/*.css')
-});
-
-gulp.task('watch',function(){
-	gulp.watch('src/*.js',['minify']);
+	//gulp.watch(config.style,['css']);
+	//gulp.watch("./*").on('change', browserSync.reload);
 })
 
-gulp.task('default',['lint','mini-js','watch']);
+gulp.task('watch',function(){
+	gulp.watch(config.style,function(){
+		//
+	})
+})
+
+gulp.task('default',['server'])
