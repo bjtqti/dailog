@@ -5,18 +5,18 @@
  */
 
 function Dialog(message,options){
-	var defaultConfig = {
+	var _default = {
 	    confirmText:"确定",
 	    cancelText:"取消",
 	    onlyConfirm:false,
 	    onConfrim:function(){}
-	},
+	};
 	options = options || {};
-	for(var i in defaultConfig){
+	for(var i in _default){
 		if(options[i]!== undefined){
 			this[i] = options[i];
 		}else{
-			this[i] = defaultConfig[i];
+			this[i] = _default[i];
 		}
 	}
 	this.createBox(message);
