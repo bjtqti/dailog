@@ -19,7 +19,7 @@ function Dialog(message,options){
 			this[i] = _default[i];
 		}
 	}
-	this.createBox(message);
+	this.createNode(message);
 }
 
 Dialog.prototype.handleEvent = function(e){
@@ -38,7 +38,7 @@ Dialog.prototype.handleEvent = function(e){
 	}
 }
 
-Dialog.prototype.createBox = function(message){
+Dialog.prototype.createNode = function(message){
 	var container = document.createElement('div');
 	container.setAttribute('class','dialog-container');
 	var html = '<div class="dialog">'+

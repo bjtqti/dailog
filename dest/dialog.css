@@ -74,12 +74,11 @@
 
 .dialog-btns > button:nth-child(1) {
     color:#222;
-    border-right: .03125rem solid #d7d7d7;
 }
 
 .dialog-btns > button:nth-child(2) {
     color: #e42b2b;
-    border-right: none;
+    border-left: .03125rem solid #d7d7d7;
 }
 
 /* 提示层 */
