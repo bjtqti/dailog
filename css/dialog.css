@@ -7,6 +7,7 @@
     bottom: 0;
     left: 0;
     background-color: rgba(0,0,0,.7);
+    font-size: .5rem;
     overflow: hidden;
     z-index: 200;
     justify-content: center;
@@ -72,6 +73,7 @@
     width:100%;
     text-align:center;
     z-index:100;
+    font-size: .4rem;
     -webkit-animation-name: down;
     animation-name: down;
     animation-duration:.5s;

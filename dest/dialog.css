@@ -11,6 +11,7 @@
     background-color: rgba(0,0,0,.7);
     overflow: hidden;
     z-index: 200;
+    font-size: .5rem;
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
@@ -89,6 +90,7 @@
     width:100%;
     text-align:center;
     z-index:100;
+    font-size: .4rem;
     -webkit-animation-name: down;
     animation-name: down;
     -webkit-animation-duration:.5s;
