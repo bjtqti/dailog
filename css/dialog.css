@@ -6,7 +6,7 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba(0,0,0,.7);
+    background-color: rgba(0,0,0,.5);
     font-size: .5rem;
     overflow: hidden;
     z-index: 200;
@@ -14,6 +14,25 @@
     align-items: flex-start;
     visibility: hidden;
 }
+.dialog-head {
+    position: relative;
+    height: 1rem;
+}
+.dialog-head > i {
+    position: absolute;
+    top: -.3rem;
+    right:-.3rem;
+    width: .8rem;
+    height: .8rem;
+    line-height: .8rem;
+    border-radius: 100%;
+    background-color: #272525;
+    color:white;
+    text-align: center;
+    font-style: normal;
+    font-size: .425rem;
+}
+
 .dialog-container.active {
     visibility: visible;
 }
@@ -24,21 +43,20 @@
     transform: scale(1)
 }
 .dialog-container .dialog {
-	background-color: white;
-    border-radius: .1875rem;
-    border: .03125rem solid #d7d7d7;
     margin: auto;
-    overflow: hidden;
     min-width: 6.25rem;
     max-width: 80%;
+    background-color: white;
+    border-radius: .1875rem;
+    border: .03125rem solid #d7d7d7;
     transform: scale(0.85);
     opacity: 0;
     transition: opacity .1s linear,transform .2s linear;
+    text-align: center;
 }
 
 .dialog-content {
-	padding: 1.2rem .9375rem;
-    text-align: center;
+	padding: 0 .9375rem .8rem;
     color:#222;
 }
 
@@ -46,13 +64,12 @@
 	display: flex;
 	line-height: .9375rem;
     border-top: .03125rem solid #d7d7d7;
-    align-items: center;
 }
 
 .dialog-btns > button {
     display: inline-block;
     background-color: white;
-    flex: 1;
+    flex-grow: 1;
     border: none;
 }
 
@@ -63,6 +80,10 @@
 .dialog-btns > button:nth-child(2) {
 	color: #e42b2b;
     border-left: .03125rem solid #d7d7d7;
+}
+
+.dialog-btns > button.only {
+    color: #007aff;
 }
 
 /* 提示层 */

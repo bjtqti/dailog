@@ -23,17 +23,18 @@ function Dialog(message,options){
 }
 
 Dialog.prototype.handleEvent = function(e){
-	var button = e.target.innerHTML;
+	var target = e.target;
+	var button = target.innerHTML;
+	var event = target.getAttribute('data-event');
 	e.preventDefault();
-	if(e.target.tagName.toLowerCase()==='button'){
-		this.container.removeEventListener('click',this,false);
-		document.body.removeChild(this.container);
+
+	if(event ==='n'){
+		this.onClose();
+		return;
 	}
-	if(button ===this.cancelText){
-		return false;
-	}
-	if(button===this.confirmText){
+	if(event==='y'){
 		this.onConfrim();
+		this.onClose();
 		return false;
 	}
 }
@@ -42,10 +43,12 @@ Dialog.prototype.createNode = function(message){
 	var container = document.createElement('div');
 	container.setAttribute('class','dialog-container');
 	var html = '<div class="dialog">'+
+					'<div class="dialog-head"><i data-event="n">x</i></div>'+
 					'<div class="dialog-content">'+message+'</div>'+
 					'<div class="dialog-btns">'+
-						(this.onlyConfirm ? '<button>'+this.confirmText+'</button>':
-						'<button>'+this.cancelText+'</button><button>'+this.confirmText+'</button>')+
+						(this.onlyConfirm ? '<button data-event="y" class="only">'+this.confirmText+'</button>':
+						'<button data-event="n" >'+this.cancelText+'</button>'+
+						'<button data-event="y" >'+this.confirmText+'</button>')+
 					'</div>'+
 				'</div>';
 	container.innerHTML = html;
@@ -56,6 +59,12 @@ Dialog.prototype.createNode = function(message){
 		container.classList.add('active');
 	},50)
 }
+
+Dialog.prototype.onClose = function(e){
+	this.container.removeEventListener('click',this,false);
+	document.body.removeChild(this.container);
+}
+
 
 //-----------
 Dialog.tips = function(message,sec){
