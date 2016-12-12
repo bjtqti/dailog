@@ -1,23 +1,19 @@
 var gulp = require('gulp');
 var postcss = require('gulp-postcss');
-var autoprefixer = require('autoprefixer');
 var browserSync = require('browser-sync');
-var cssnext = require('cssnext');
-var precss = require('precss');
 var reload = browserSync.reload;
-
-
-var config = {
-	style : ['./css/*.css']
-}
 
 gulp.task('css',function(){
 	var processors = [
-		precss,
-		cssnext,
-		autoprefixer({browsers:['last 2 versions', 'Android >= 4.0']})
+ 
+		require("postcss-import")(),
+		require("postcss-url")(),
+		require("postcss-cssnext")(),
+		require("postcss-browser-reporter")(),
+		require("postcss-reporter")()
 	];
-	return gulp.src(config.style)
+
+	return gulp.src('./css/*.css')
 		.pipe(postcss(processors))
 		.pipe(gulp.dest('./dest'))
 		.pipe(reload({stream:true}))
